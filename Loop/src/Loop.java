@@ -16,7 +16,7 @@ public class Loop {
             d++;
         }
         System.out.println("The sum of numbers calculated by loop while = "+sum);
-        
+
         sum=0;
         for(int i=0;i<=5;i++){
             sum+=i;
