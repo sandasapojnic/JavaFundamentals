@@ -7,6 +7,7 @@ public class Reverse {
         for(int i=s.length()-1;i>=0;i--){
          str1+= s.charAt(i);
         }
+
          return str1;
     }
 
