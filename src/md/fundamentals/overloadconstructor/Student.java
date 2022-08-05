@@ -1,6 +1,5 @@
 package md.fundamentals.overloadconstructor;
 
-import javax.sound.midi.Soundbank;
 
 public class Student {
     private long id;

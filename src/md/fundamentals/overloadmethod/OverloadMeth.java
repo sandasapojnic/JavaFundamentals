@@ -1,7 +1,5 @@
 package md.fundamentals.overloadmethod;
 
-
-
 public class OverloadMeth {
 
     public int check(int a ,int b){

@@ -1,7 +1,5 @@
 package md.fundamentals.overloadmethod;
 
-import java.sql.SQLOutput;
-
 public class Book {
     private int year;
     private String name;
