@@ -9,9 +9,6 @@ public class Array1 {
             if(arr[i]==idx){
                 return i;
             }
-            else{
-                continue;
-            }
           }
 
         return -1;
@@ -28,13 +25,11 @@ public class Array1 {
         int j=0;
         for(int i=0;i<= eN.length-1;i++) {
             if (eN[i] % 2 == 0) {
-                while(j<=v.length-1) {
                     v[j]= eN[i];
                     j++;
-                    break;
                 }
             }
-            }
+
       return v;
     }
     public static void main (String args[]){
@@ -55,5 +50,6 @@ public class Array1 {
            }
        }
        System.out.println("Even = "+ Arrays.toString(eNum.even(e,c)));
+
     }
 }
