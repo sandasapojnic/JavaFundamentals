@@ -11,12 +11,12 @@ public class TestEmployee {
         Employee employee = new Employee("Ion", "Bostan");
         Employee employee2 = new Employee("Vasile", "Josan");
         Employee employee3 = new Employee("Ana", "Dicusar");
-        int id=4;
+        int id=3;
 
         EmployeeService employeeService = new EmployeeService();
         EmployeeDao emp=new EmployeeDao();
         boolean isEmployeeSaved = employeeService.create(employee);
-        System.out.println("--------Create--------");
+        System.out.println(" Create ");
         employeeService.create(employee2);
         employeeService.create(employee3);
         employeeService.listEmployees();
@@ -25,13 +25,20 @@ public class TestEmployee {
         employeeService.read(id);
         System.out.println();
         System.out.println("Update employee where id = " +id);
+        employee.setName("Artur");
         employee2.setName("Cristian");
         employee2.setLastName("Rosu");
-        employeeService.update(id,employee2);
+        employee3.setLastName("Ctitor");
+        switch (id){
+            case 1:employeeService.update(id,employee); break;
+            case 2:employeeService.update(id,employee2); break;
+            case 3:employeeService.update(id,employee3); break;
+            default:System.out.println("This id was not found!");
+        }
+
         System.out.println();
         System.out.println("Delete employee where id = " +id);
         employeeService.delete(id);
-        System.out.println();
         employeeService.listEmployees();
 
     }

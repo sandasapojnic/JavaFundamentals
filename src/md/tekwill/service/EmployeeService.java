@@ -29,14 +29,13 @@ public class EmployeeService {
        return false;
     }
     public boolean update(int empId,Employee updateEmployee){
-        if(updateEmployee.getName().length()>0
-                && updateEmployee.getLastName().length()>0){
-            if(updateEmployee.getId()==empId) {
+            if (updateEmployee.getName().length() > 0
+                    && updateEmployee.getLastName().length() > 0
+            && updateEmployee.getId()==empId) {
                 employeeDao.update(empId, updateEmployee);
                 return true;
             }
-        }
-        System.out.println("Update failed!");
+
         return false;
     }
     public boolean delete(int empId){
