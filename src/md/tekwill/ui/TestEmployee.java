@@ -11,7 +11,7 @@ public class TestEmployee {
         Employee employee = new Employee("Ion", "Bostan");
         Employee employee2 = new Employee("Vasile", "Josan");
         Employee employee3 = new Employee("Ana", "Dicusar");
-        int id=2;
+        int id=4;
 
         EmployeeService employeeService = new EmployeeService();
         EmployeeDao emp=new EmployeeDao();
@@ -31,6 +31,7 @@ public class TestEmployee {
         System.out.println();
         System.out.println("Delete employee where id = " +id);
         employeeService.delete(id);
+        System.out.println();
         employeeService.listEmployees();
 
     }

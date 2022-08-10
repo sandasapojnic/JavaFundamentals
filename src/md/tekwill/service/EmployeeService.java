@@ -29,15 +29,14 @@ public class EmployeeService {
        return false;
     }
     public boolean update(int empId,Employee updateEmployee){
-        for (Employee employee : employeeDao.getAll()) {
-            if (employee != null) {
-                if (employee.getId() == empId) {
-                    employeeDao.update(empId,updateEmployee);
-                    return true;
-                }
+        if(updateEmployee.getName().length()>0
+                && updateEmployee.getLastName().length()>0){
+            if(updateEmployee.getId()==empId) {
+                employeeDao.update(empId, updateEmployee);
+                return true;
             }
         }
-        System.out.println("This id was not found!");
+        System.out.println("Update failed!");
         return false;
     }
     public boolean delete(int empId){
