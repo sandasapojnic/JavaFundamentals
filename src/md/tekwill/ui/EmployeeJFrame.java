@@ -177,16 +177,12 @@ public class EmployeeJFrame extends javax.swing.JFrame {
        nameField.setText("");
        lastNameField.setText("");
        
-       jLabelIdDisplay.setText(""+foundEmployee.getId());
-       jLabelNameDisplay.setText(foundEmployee.getName());
-       jLabelLastNameDisplay.setText(foundEmployee.getLastName());
+       Display(foundEmployee);
     }//GEN-LAST:event_createButtonActionPerformed
 
     private void selectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButtonActionPerformed
        Employee foundEmployee = empService.read(Integer.valueOf(idField.getText()));
-       jLabelIdDisplay.setText(""+foundEmployee.getId());
-       jLabelNameDisplay.setText(foundEmployee.getName());
-       jLabelLastNameDisplay.setText(foundEmployee.getLastName());
+       Display(foundEmployee);
        idField.setText("");
     }//GEN-LAST:event_selectButtonActionPerformed
 
@@ -211,15 +207,17 @@ public class EmployeeJFrame extends javax.swing.JFrame {
        foundEmployee.setName(nameField.getText());
        foundEmployee.setLastName(lastNameField.getText());
        empService.update(Integer.valueOf(idField.getText()),foundEmployee);
-       jLabelIdDisplay.setText(""+foundEmployee.getId());
-       jLabelNameDisplay.setText(foundEmployee.getName());
-       jLabelLastNameDisplay.setText(foundEmployee.getLastName());
+       Display(foundEmployee);
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
         
     }//GEN-LAST:event_updateButtonMouseClicked
-
+    private void Display(Employee foundEmployee){
+       jLabelIdDisplay.setText(""+foundEmployee.getId());
+       jLabelNameDisplay.setText(foundEmployee.getName());
+       jLabelLastNameDisplay.setText(foundEmployee.getLastName());
+    }
     /**
      * @param args the command line arguments
      */
