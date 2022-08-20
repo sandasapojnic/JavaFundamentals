@@ -179,7 +179,7 @@ public class EmployeeJFrame extends javax.swing.JFrame {
        
        Display(foundEmployee);
     }//GEN-LAST:event_createButtonActionPerformed
-
+    
     private void selectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButtonActionPerformed
        Employee foundEmployee = empService.read(Integer.valueOf(idField.getText()));
        Display(foundEmployee);
@@ -205,7 +205,9 @@ public class EmployeeJFrame extends javax.swing.JFrame {
        lastNameField.setText(foundEmployee.getLastName());
        
        foundEmployee.setName(nameField.getText());
+       System.out.println(nameField.getText());
        foundEmployee.setLastName(lastNameField.getText());
+       System.out.println(lastNameField.getText());
        empService.update(Integer.valueOf(idField.getText()),foundEmployee);
        Display(foundEmployee);
     }//GEN-LAST:event_updateButtonActionPerformed
