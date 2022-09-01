@@ -1,12 +1,13 @@
 package md.tekwill.dao;
 
 import md.tekwill.model.Employee;
+import md.tekwill.model.Departament;
 
 public class EmployeeDao {
 
     private static Employee[] employeesArr = new Employee[10];
 
-    public void create(Employee employee) {
+    public void create(Employee employee ) {
         for (int i = 0; i < employeesArr.length; i++) {
             Employee existingEmployee = employeesArr[i];
             if (existingEmployee == null) {

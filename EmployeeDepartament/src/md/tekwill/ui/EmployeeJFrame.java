@@ -8,6 +8,7 @@ package md.tekwill.ui;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import md.tekwill.model.Employee;
+import md.tekwill.model.Departament;
 import md.tekwill.service.EmployeeService;
 
 /**
@@ -43,9 +44,6 @@ public class EmployeeJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
-        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabelId = new javax.swing.JLabel();
         jTextFieldId = new javax.swing.JTextField();
         jLabelName = new javax.swing.JLabel();
@@ -61,12 +59,8 @@ public class EmployeeJFrame extends javax.swing.JFrame {
         jTableEmployee = new javax.swing.JTable();
         jButtonUpdate = new javax.swing.JButton();
         jButtonDelete = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-
-        jTextField1.setText("jTextField1");
-
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
+        jLabelDepartament = new javax.swing.JLabel();
+        jComboBoxDepartament = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,7 +114,9 @@ public class EmployeeJFrame extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabelDepartament.setText("Department: ");
+
+        jComboBoxDepartament.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Department", "Tehnologii Informationale", "Resurse Umane", "Marketing", "Vanzari" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,11 +126,9 @@ public class EmployeeJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelIdDispay)
+                    .addComponent(jLabelNameDisplay)
+                    .addComponent(jLabelLastNameDisplay)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelNameDisplay)
-                            .addComponent(jLabelLastNameDisplay))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonSearch)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonSave)
@@ -142,20 +136,20 @@ public class EmployeeJFrame extends javax.swing.JFrame {
                         .addComponent(jButtonUpdate)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonDelete))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelLastName)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelLastName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabelName)
-                            .addComponent(jLabelId))
+                            .addComponent(jLabelId)
+                            .addComponent(jLabelDepartament, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1, 0, 172, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldName)
-                                .addComponent(jTextFieldLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)))))
-                .addContainerGap(137, Short.MAX_VALUE))
+                            .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldName)
+                            .addComponent(jTextFieldLastName)
+                            .addComponent(jComboBoxDepartament, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,9 +166,11 @@ public class EmployeeJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelLastName)
                     .addComponent(jTextFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelDepartament)
+                    .addComponent(jComboBoxDepartament, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
                 .addComponent(jLabelIdDispay)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelNameDisplay)
@@ -182,13 +178,13 @@ public class EmployeeJFrame extends javax.swing.JFrame {
                 .addComponent(jLabelLastNameDisplay)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSearch)
                     .addComponent(jButtonSave)
                     .addComponent(jButtonUpdate)
                     .addComponent(jButtonDelete))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -205,6 +201,7 @@ public class EmployeeJFrame extends javax.swing.JFrame {
 
         jTextFieldName.setText(foundEmployee.getName());
         jTextFieldLastName.setText(foundEmployee.getLastName());
+        //jComboBoxDepartament.setSelectedIndex();
         
 
 
@@ -213,14 +210,12 @@ public class EmployeeJFrame extends javax.swing.JFrame {
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         Employee employee = new Employee(jTextFieldName.getText(), jTextFieldLastName.getText());
         employeeService.create(employee);
-
+        String value = jComboBoxDepartament.getSelectedItem().toString();
         Employee foundEmployee = employeeService.search(employee.getId());
-        //String[] strings={}
-        defaultTableModel.addRow(new Object[]{foundEmployee.getId(), foundEmployee.getName(), foundEmployee.getLastName()});
-
+        defaultTableModel.addRow(new Object[]{foundEmployee.getId(), foundEmployee.getName(), foundEmployee.getLastName(),value});
+        
+        jComboBoxDepartament.setSelectedIndex(0);
         clearFields();
-
-
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jTextFieldNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNameActionPerformed
@@ -232,13 +227,15 @@ public class EmployeeJFrame extends javax.swing.JFrame {
 
         foundEmployee.setName(jTextFieldName.getText());
         foundEmployee.setLastName(jTextFieldLastName.getText());
-//
+        jComboBoxDepartament.setSelectedIndex(Integer.valueOf(jTextFieldId.getText()));
+
         employeeService.update(Integer.valueOf(jTextFieldId.getText()), foundEmployee);
 
         for (int i = 0; i < defaultTableModel.getRowCount(); i++) {
             if (defaultTableModel.getValueAt(i, 0).equals(Integer.valueOf(jTextFieldId.getText()))) {
                 defaultTableModel.setValueAt(jTextFieldName.getText(), i, 1);
                 defaultTableModel.setValueAt(jTextFieldLastName.getText(), i, 2);
+                defaultTableModel.setValueAt(jComboBoxDepartament.getSelectedItem().toString(), i, 3);
             }
 
         }
@@ -309,13 +306,12 @@ public class EmployeeJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonSave;
     private javax.swing.JButton jButtonSearch;
     private javax.swing.JButton jButtonUpdate;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxDepartament;
+    private javax.swing.JLabel jLabelDepartament;
     private javax.swing.JLabel jLabelId;
     private javax.swing.JLabel jLabelIdDispay;
     private javax.swing.JLabel jLabelLastName;
@@ -324,7 +320,6 @@ public class EmployeeJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNameDisplay;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableEmployee;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldId;
     private javax.swing.JTextField jTextFieldLastName;
     private javax.swing.JTextField jTextFieldName;

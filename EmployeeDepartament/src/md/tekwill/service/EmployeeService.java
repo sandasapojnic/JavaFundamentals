@@ -1,13 +1,14 @@
 package md.tekwill.service;
 
 import md.tekwill.dao.EmployeeDao;
+import md.tekwill.model.Departament;
 import md.tekwill.model.Employee;
 
 public class EmployeeService {
 
     private EmployeeDao employeeDao = new EmployeeDao();
 
-    public boolean create(Employee employee) {
+    public boolean create(Employee employee ) {
         if (employee.getName().length() > 0
                 && employee.getLastName().length() > 0) {
 
