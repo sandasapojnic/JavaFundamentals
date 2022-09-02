@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Alexandra/Documents/NetBeansProjects/EmployeeDepartament/src/md/tekwill/dao/EmployeeDao.java</file>
-            <file>file:/C:/Users/Alexandra/Documents/NetBeansProjects/EmployeeDepartament/src/md/tekwill/model/Employee.java</file>
-            <file>file:/C:/Users/Alexandra/Documents/NetBeansProjects/EmployeeDepartament/src/md/tekwill/service/EmployeeService.java</file>
-            <file>file:/C:/Users/Alexandra/Documents/NetBeansProjects/EmployeeDepartament/src/md/tekwill/ui/EmployeeJFrame.java</file>
+            <file>file:/D:/Courses/JavaFundamentals/EmployeeDepartament/src/md/tekwill/ui/EmployeeJFrame.java</file>
+            <file>file:/D:/Courses/JavaFundamentals/EmployeeDepartament/src/md/tekwill/service/EmployeeService.java</file>
+            <file>file:/D:/Courses/JavaFundamentals/EmployeeDepartament/src/md/tekwill/dao/EmployeeDao.java</file>
+            <file>file:/D:/Courses/JavaFundamentals/EmployeeDepartament/src/md/tekwill/model/Employee.java</file>
         </group>
     </open-files>
 </project-private>

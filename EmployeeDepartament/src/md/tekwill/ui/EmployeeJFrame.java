@@ -201,10 +201,14 @@ public class EmployeeJFrame extends javax.swing.JFrame {
 
         jTextFieldName.setText(foundEmployee.getName());
         jTextFieldLastName.setText(foundEmployee.getLastName());
-        //jComboBoxDepartament.setSelectedIndex();
         
+        for (int i = 0; i < defaultTableModel.getRowCount(); i++) {
+            if (defaultTableModel.getValueAt(i, 0).equals(Integer.valueOf(jTextFieldId.getText()))) {
+               jComboBoxDepartament.setSelectedItem(defaultTableModel.getValueAt(i, 3)); 
+            }
 
-
+        }
+            
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
@@ -227,7 +231,7 @@ public class EmployeeJFrame extends javax.swing.JFrame {
 
         foundEmployee.setName(jTextFieldName.getText());
         foundEmployee.setLastName(jTextFieldLastName.getText());
-        jComboBoxDepartament.setSelectedIndex(Integer.valueOf(jTextFieldId.getText()));
+        
 
         employeeService.update(Integer.valueOf(jTextFieldId.getText()), foundEmployee);
 
@@ -239,7 +243,8 @@ public class EmployeeJFrame extends javax.swing.JFrame {
             }
 
         }
-
+      
+       jComboBoxDepartament.setSelectedIndex(0);
        clearFields();
        jTextFieldId.setText("");
     }//GEN-LAST:event_jButtonUpdateActionPerformed
@@ -248,15 +253,16 @@ public class EmployeeJFrame extends javax.swing.JFrame {
         Employee foundEmployee = employeeService.search(Integer.valueOf(jTextFieldId.getText()));
         foundEmployee=null;
         employeeService.delete(Integer.valueOf(jTextFieldId.getText()));
-        clearFields();
-        jTextFieldId.setText("");
+        
         for (int i = 0; i < defaultTableModel.getRowCount(); i++) {
             if (defaultTableModel.getValueAt(i, 0).equals(Integer.valueOf(jTextFieldId.getText()))) {
                 defaultTableModel.removeRow(i);
             }
 
         }
-         
+        jComboBoxDepartament.setSelectedIndex(0);
+        clearFields();
+        jTextFieldId.setText("");  
          
     }//GEN-LAST:event_jButtonDeleteActionPerformed
     private void clearFields() {
