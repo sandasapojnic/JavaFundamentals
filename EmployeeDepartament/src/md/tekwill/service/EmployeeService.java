@@ -8,16 +8,25 @@ public class EmployeeService {
 
     private EmployeeDao employeeDao = new EmployeeDao();
 
-    public boolean create(Employee employee ) {
-        if (employee.getName().length() > 0
-                && employee.getLastName().length() > 0) {
-
-            employeeDao.create(employee);
-            return true;
-
-        }
-        System.out.println("Employee validation failed!");
-        return false;
+    public boolean create(Employee employee ) throws ValidationException {
+       if(employee.getName().isEmpty()||employee.getLastName().isEmpty())
+           {
+               throw new ValidationException("Empty filed,please enter employee name and lastname");
+              
+           }
+       
+       else if(Character.isDigit(employee.getName().charAt(0))||Character.isDigit(employee.getLastName().charAt(0)) )
+       {
+           throw new ValidationException("The string contains numbers ");
+           
+       }
+       else if(employee.getName().length()>0 && employee.getLastName().length()>0)
+       {
+          employeeDao.create(employee);
+       
+       } 
+            
+            return false;
     }
 
     public Employee search(int id) {
@@ -43,8 +52,6 @@ public class EmployeeService {
 
         }
     }
-    //TODO
-    // add similar methods as in DAO and call them here
-
+   
     
 }

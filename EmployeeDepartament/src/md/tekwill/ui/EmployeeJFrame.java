@@ -8,7 +8,7 @@ package md.tekwill.ui;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import md.tekwill.model.Employee;
-import md.tekwill.model.Departament;
+import md.tekwill.service.ValidationException;
 import md.tekwill.service.EmployeeService;
 
 /**
@@ -21,15 +21,14 @@ public class EmployeeJFrame extends javax.swing.JFrame {
 
     private DefaultTableModel defaultTableModel = new DefaultTableModel(new Object[][]{},
             new String[]{
-                "ID", "Name", "Last name","Department"
+                "ID", "Name", "Last name", "Department"
             });
-    
 
     /**
      * Creates new form EmployeeJFrame
      */
     public EmployeeJFrame() {
-       
+
         initComponents();
         jTableEmployee.setModel(defaultTableModel);
 
@@ -201,24 +200,36 @@ public class EmployeeJFrame extends javax.swing.JFrame {
 
         jTextFieldName.setText(foundEmployee.getName());
         jTextFieldLastName.setText(foundEmployee.getLastName());
-        
+
         for (int i = 0; i < defaultTableModel.getRowCount(); i++) {
             if (defaultTableModel.getValueAt(i, 0).equals(Integer.valueOf(jTextFieldId.getText()))) {
-               jComboBoxDepartament.setSelectedItem(defaultTableModel.getValueAt(i, 3)); 
+                jComboBoxDepartament.setSelectedItem(defaultTableModel.getValueAt(i, 3));
             }
 
         }
-            
+
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
-        Employee employee = new Employee(jTextFieldName.getText(), jTextFieldLastName.getText());
-        employeeService.create(employee);
-        String value = jComboBoxDepartament.getSelectedItem().toString();
-        Employee foundEmployee = employeeService.search(employee.getId());
-        defaultTableModel.addRow(new Object[]{foundEmployee.getId(), foundEmployee.getName(), foundEmployee.getLastName(),value});
         
-        jComboBoxDepartament.setSelectedIndex(0);
+        
+        try {
+          
+            Employee employee = new Employee(jTextFieldName.getText(), jTextFieldLastName.getText());
+            employeeService.create(employee);
+            
+            String value = jComboBoxDepartament.getSelectedItem().toString();
+            Employee foundEmployee = employeeService.search(employee.getId());
+            defaultTableModel.addRow(new Object[]{foundEmployee.getId(), foundEmployee.getName(), foundEmployee.getLastName(), value});
+        }
+        catch(ValidationException e){
+            showException(e);
+        }
+        catch(Exception ex){
+             showException(ex);
+        }
+     
+       
         clearFields();
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
@@ -231,7 +242,6 @@ public class EmployeeJFrame extends javax.swing.JFrame {
 
         foundEmployee.setName(jTextFieldName.getText());
         foundEmployee.setLastName(jTextFieldLastName.getText());
-        
 
         employeeService.update(Integer.valueOf(jTextFieldId.getText()), foundEmployee);
 
@@ -243,31 +253,32 @@ public class EmployeeJFrame extends javax.swing.JFrame {
             }
 
         }
-      
-       jComboBoxDepartament.setSelectedIndex(0);
-       clearFields();
-       jTextFieldId.setText("");
+
+        
+        clearFields();
+        jTextFieldId.setText("");
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         Employee foundEmployee = employeeService.search(Integer.valueOf(jTextFieldId.getText()));
-        foundEmployee=null;
+        foundEmployee = null;
         employeeService.delete(Integer.valueOf(jTextFieldId.getText()));
-        
+
         for (int i = 0; i < defaultTableModel.getRowCount(); i++) {
             if (defaultTableModel.getValueAt(i, 0).equals(Integer.valueOf(jTextFieldId.getText()))) {
                 defaultTableModel.removeRow(i);
             }
 
         }
-        jComboBoxDepartament.setSelectedIndex(0);
+        
         clearFields();
-        jTextFieldId.setText("");  
-         
+        jTextFieldId.setText("");
+
     }//GEN-LAST:event_jButtonDeleteActionPerformed
     private void clearFields() {
         jTextFieldName.setText("");
         jTextFieldLastName.setText("");
+        jComboBoxDepartament.setSelectedIndex(0);
     }
 
     private void displayEmployee(Employee foundEmployee) {
@@ -275,6 +286,13 @@ public class EmployeeJFrame extends javax.swing.JFrame {
         jLabelNameDisplay.setText(foundEmployee.getName());
         jLabelLastNameDisplay.setText(foundEmployee.getLastName());
     }
+     private void showException(Exception e) {
+       JOptionPane.showMessageDialog(this,
+                    e.getMessage(),
+                    "Exception",
+                    JOptionPane.ERROR_MESSAGE);
+    }
+    
 
     /**
      * @param args the command line arguments
